@@ -1,5 +1,7 @@
 package com.jarluo.mybatis;
 
+import com.jarluo.mybatis.executor.JvExecutor;
+
 /**
  * @desc 入口 会话
  *

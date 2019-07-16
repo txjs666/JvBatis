@@ -1,4 +1,6 @@
-package com.jarluo.mybatis;
+package com.jarluo.mybatis.mapper;
+
+import com.jarluo.mybatis.Blog;
 
 /**
  * @from: https://www.cnblogs.com/java333/

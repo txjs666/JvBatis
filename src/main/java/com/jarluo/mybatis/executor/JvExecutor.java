@@ -1,4 +1,6 @@
-package com.jarluo.mybatis;
+package com.jarluo.mybatis.executor;
+
+import com.jarluo.mybatis.Blog;
 
 import java.sql.*;
 
