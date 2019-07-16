@@ -14,6 +14,11 @@ public class JvSqlSession {
      */
     private JvExecutor executor;
 
+    public  JvSqlSession(JvConfiguration configuration,JvExecutor executor){
+        this.configuration = configuration;
+        this.executor = executor;
+    }
+
     /**
      * @desc 调用executor执行单条查询
      * @param statementId
@@ -22,7 +27,7 @@ public class JvSqlSession {
      * @return
      */
     public <T> T selectOne(String statementId,Object parameter){
-        String sql = statementId;
+        String sql = JvConfiguration.sqlMappings.getString(statementId);
         return executor.query(sql,parameter);
     }
 
@@ -32,6 +37,6 @@ public class JvSqlSession {
      * @param <T>
      */
     public <T> T getMapper(Class clazz){
-        return configuration.getMapper(clazz);
+        return configuration.getMapper(clazz,this);
     }
 }
