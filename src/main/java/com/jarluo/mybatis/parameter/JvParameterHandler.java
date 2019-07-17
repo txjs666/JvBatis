@@ -8,9 +8,9 @@ import java.sql.PreparedStatement;
  * @author: jar luo
  * @date: 2019/7/16 23:02
  */
-public class ParameterHandler {
+public class JvParameterHandler {
     private PreparedStatement psmt;
-    public ParameterHandler(PreparedStatement statement){
+    public JvParameterHandler(PreparedStatement statement){
         this.psmt = statement;
     }
 

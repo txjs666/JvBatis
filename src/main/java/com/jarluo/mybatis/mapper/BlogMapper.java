@@ -1,5 +1,7 @@
 package com.jarluo.mybatis.mapper;
 
+import com.jarluo.mybatis.Annotation.Entity;
+import com.jarluo.mybatis.Annotation.Select;
 import com.jarluo.mybatis.Blog;
 
 /**
@@ -14,5 +16,6 @@ public interface BlogMapper {
      * @param id
      * @return
      */
+    @Select("select * from user where id = ?")
     public Blog selectBlogById(Integer id);
 }

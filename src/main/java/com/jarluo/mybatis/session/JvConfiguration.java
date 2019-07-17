@@ -1,4 +1,7 @@
-package com.jarluo.mybatis;
+package com.jarluo.mybatis.session;
+
+import com.jarluo.mybatis.JvMapperProxy;
+import com.jarluo.mybatis.JvSqlSession;
 
 import java.lang.reflect.Proxy;
 import java.util.ResourceBundle;
@@ -6,6 +9,17 @@ import java.util.ResourceBundle;
 public class JvConfiguration {
 
     public final static ResourceBundle sqlMappings;
+    public JvConfiguration(){
+        //Note:在properties和注解中重复配置SQL会覆盖
+        //1.解析sql.properties
+        for (String key : sqlMappings.keySet()) {
+            String statement = sqlMappings.getString(key);
+
+        }
+
+
+    }
+
 
     static{
         sqlMappings = ResourceBundle.getBundle("jvsql");
