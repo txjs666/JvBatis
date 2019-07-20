@@ -22,7 +22,7 @@ public class JvSqlSessionFactory {
     }
 
     public JvDefaultSqlSession openSqlSesison(){
-        return new JvDefaultSqlSession(configuration,new JvSimpleExecutor());
+        return new JvDefaultSqlSession(configuration);
     }
 
 

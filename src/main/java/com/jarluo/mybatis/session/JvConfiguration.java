@@ -1,6 +1,9 @@
 package com.jarluo.mybatis.session;
 
 import com.jarluo.mybatis.binding.JvMapperProxy;
+import com.jarluo.mybatis.executor.CachingExecutor;
+import com.jarluo.mybatis.executor.JvExecutor;
+import com.jarluo.mybatis.executor.JvSimpleExecutor;
 
 import java.lang.reflect.Proxy;
 import java.util.HashMap;
@@ -10,11 +13,13 @@ import java.util.ResourceBundle;
 public class JvConfiguration {
 
     public static final  ResourceBundle sqlMappings;
+    public static final  ResourceBundle properties;
     private static final MapperRegistry mapperRegistry =  new MapperRegistry();
     private final Map<String, String> mappedStatements = new HashMap<>();
 
     static{
         sqlMappings = ResourceBundle.getBundle("jvsql");
+        properties = ResourceBundle.getBundle("JvBatis");
     }
 
 
@@ -56,13 +61,21 @@ public class JvConfiguration {
      * @return
      */
     public <T> T getMapper(Class clazz,JvDefaultSqlSession sqlSession) {
-        return (T) Proxy.newProxyInstance(this.getClass().getClassLoader()
-                                        ,new Class[]{clazz}
-                                        ,new JvMapperProxy(sqlSession,clazz));
+        return (T) mapperRegistry.getMapper(clazz,sqlSession);
 
     }
 
     public boolean hasStatement(String statementName){
         return mappedStatements.containsKey(statementName);
+    }
+
+    public JvExecutor newExecutor(){
+        JvExecutor executor = null;
+        if(properties.getString("cache.enabled").equals("true")){
+            executor = new CachingExecutor(new JvSimpleExecutor());
+        }else{
+            executor = new JvSimpleExecutor();
+        }
+        return executor;
     }
 }

@@ -30,7 +30,7 @@ public class MapperRegistry {
     public <T> T getMapper(Class<T> clazz, JvDefaultSqlSession sqlSession){
         JvMapperProxyFactory proxyFactory = knownMappers.get(clazz);
         if(proxyFactory == null){
-            throw new RuntimeException("Type"+clazz+"can not find");
+            throw new RuntimeException("Type"+clazz+" can not find");
         }
         return (T)proxyFactory.newInstance(sqlSession);
     }

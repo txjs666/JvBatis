@@ -19,9 +19,9 @@ public class JvDefaultSqlSession {
      */
     private JvExecutor executor;
 
-    public JvDefaultSqlSession(JvConfiguration configuration,JvExecutor executor){
+    public JvDefaultSqlSession(JvConfiguration configuration){
         this.configuration = configuration;
-        this.executor  = executor;
+        this.executor  = configuration.newExecutor();
     }
 
     public JvConfiguration getConfiguration() {

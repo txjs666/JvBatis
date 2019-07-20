@@ -33,7 +33,7 @@ public class ResultSetHandler {
 
     private void setValue(Object pojo, Field field, ResultSet resultSet) {
         try {
-            Method setMethod = pojo.getClass().getMethod("set"+firstWordCapital(field.getName()));
+            Method setMethod = pojo.getClass().getMethod("set"+firstWordCapital(field.getName()),field.getType());
             setMethod.invoke(pojo,getResult(resultSet,field));
         } catch (Exception e) {
             e.printStackTrace();
