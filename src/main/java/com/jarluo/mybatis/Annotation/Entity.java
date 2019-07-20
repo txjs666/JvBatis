@@ -5,9 +5,9 @@ import java.lang.annotation.*;
 /**
  * @desc
  */
+@Documented
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Documented
 public @interface Entity {
-    String value();
+    Class<?> value();
 }
